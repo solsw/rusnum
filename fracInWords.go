@@ -11,7 +11,8 @@ type (
 
 // Supported fractions.
 const (
-	Tenth Fraction = iota
+	_ Fraction = iota
+	Tenth
 	Hundredth
 	Thousandth
 	Tenthousandth

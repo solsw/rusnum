@@ -14,12 +14,48 @@ func TestNDays(t *testing.T) {
 		args args
 		want string
 	}{
-		{name: "00", args: args{n: 0, showZero: false}, want: ""},
-		{name: "01", args: args{n: 0, showZero: true}, want: "0 дней"},
-		{name: "1", args: args{n: 1, showZero: true}, want: "1 день"},
-		{name: "2", args: args{n: 2, showZero: true}, want: "2 дня"},
-		{name: "3", args: args{n: 3, showZero: true}, want: "3 дня"},
-		{name: "88", args: args{n: 88, showZero: true}, want: "88 дней"},
+		{name: "00",
+			args: args{
+				n:        0,
+				showZero: false,
+			},
+			want: "",
+		},
+		{name: "01",
+			args: args{
+				n:        0,
+				showZero: true,
+			},
+			want: "0 дней",
+		},
+		{name: "1",
+			args: args{
+				n:        1,
+				showZero: true,
+			},
+			want: "1 день",
+		},
+		{name: "2",
+			args: args{
+				n:        2,
+				showZero: true,
+			},
+			want: "2 дня",
+		},
+		{name: "3",
+			args: args{
+				n:        3,
+				showZero: true,
+			},
+			want: "3 дня",
+		},
+		{name: "88",
+			args: args{
+				n:        88,
+				showZero: true,
+			},
+			want: "88 дней",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
