@@ -74,11 +74,11 @@ func IntAndItems(n int64, showZero bool, items string) string {
 }
 
 // IntInWordsAndItems returns string containing 'n' in russian words and 'items'.
-// If 'n' is 0 and 'showZero' is false, empty string is returned.
-// If 'withZero' is false, zero triples are omitted.
-func IntInWordsAndItems(n int64, showZero, withZero bool, gender GrammaticalGender, items string) string {
+// If 'n' is 0 and 'withZeros' is false, empty string is returned.
+// If 'withZeros' is false, zero triples are omitted.
+func IntInWordsAndItems(n int64, showZero, withZeros bool, gender GrammaticalGender, items string) string {
 	if n == 0 && !showZero {
 		return ""
 	}
-	return IntInWords(n, withZero, gender) + " " + items
+	return IntInWords(n, withZeros, gender) + " " + items
 }

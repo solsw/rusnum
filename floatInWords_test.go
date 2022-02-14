@@ -1,17 +1,19 @@
 package rusnum
 
 import (
+	"fmt"
+	"math"
 	"testing"
 )
 
 func TestFloatInWords(t *testing.T) {
 	type args struct {
-		f            float64
-		fraction     Fraction
-		binder       Binder
-		showZeroInt  bool
-		showZeroFrac bool
-		withZeroInt  bool
+		f         float64
+		fraction  Fraction
+		binder    Binder
+		zeroInt   bool
+		zeroFrac  bool
+		withZeros bool
 	}
 	tests := []struct {
 		name string
@@ -26,97 +28,117 @@ func TestFloatInWords(t *testing.T) {
 		},
 		{name: "02",
 			args: args{f: 0.0,
-				fraction:     Tenth,
-				showZeroFrac: true,
+				fraction: Tenth,
+				zeroFrac: true,
 			},
 			want: "ноль десятых",
 		},
 		{name: "03",
 			args: args{
-				f:            0.0,
-				fraction:     Tenth,
-				showZeroInt:  true,
-				showZeroFrac: true,
+				f:        0.0,
+				fraction: Tenth,
+				zeroInt:  true,
+				zeroFrac: true,
 			},
 			want: "ноль ноль десятых",
 		},
 		{name: "04",
 			args: args{
-				f:            -0.0,
-				fraction:     Tenth,
-				binder:       And,
-				showZeroInt:  true,
-				showZeroFrac: true,
+				f:        -0.0,
+				fraction: Tenth,
+				binder:   And,
+				zeroInt:  true,
+				zeroFrac: true,
 			},
 			want: "ноль и ноль десятых",
 		},
 		{name: "05",
 			args: args{
-				f:            0.0,
-				fraction:     Tenth,
-				binder:       Whole,
-				showZeroInt:  true,
-				showZeroFrac: true,
+				f:        0.0,
+				fraction: Tenth,
+				binder:   Whole,
+				zeroInt:  true,
+				zeroFrac: true,
 			},
 			want: "ноль целых ноль десятых",
 		},
 		{name: "06",
 			args: args{
-				f:            0.0,
-				fraction:     Thousandth,
-				showZeroFrac: true,
+				f:        0.0,
+				fraction: Thousandth,
+				zeroFrac: true,
 			},
 			want: "ноль тысячных",
 		},
 		{name: "0.1_10",
 			args: args{
-				f:            0.1,
-				fraction:     Tenth,
-				showZeroFrac: true,
+				f:        0.1,
+				fraction: Tenth,
+				zeroFrac: true,
 			},
 			want: "одна десятая",
 		},
 		{name: "-0.1_100",
 			args: args{
-				f:            -0.1,
-				fraction:     Hundredth,
-				showZeroFrac: true,
+				f:        -0.1,
+				fraction: Hundredth,
+				zeroFrac: true,
 			},
 			want: "минус десять сотых",
 		},
 		{name: "0.1_1000",
 			args: args{
-				f:            0.1,
-				fraction:     Thousandth,
-				showZeroFrac: true,
+				f:        0.1,
+				fraction: Thousandth,
+				zeroFrac: true,
 			},
 			want: "сто тысячных",
 		},
 		{name: "21.123_100_Whole",
 			args: args{
-				f:            21.123,
-				fraction:     Hundredth,
-				binder:       Whole,
-				showZeroFrac: true,
+				f:        21.123,
+				fraction: Hundredth,
+				binder:   Whole,
+				zeroFrac: true,
 			},
 			want: "двадцать одна целая двенадцать сотых",
 		},
 		{name: "-21.123_1000000000_And",
 			args: args{
-				f:            -21.123,
-				fraction:     Milliardth,
-				binder:       And,
-				showZeroFrac: true,
+				f:        -21.123,
+				fraction: Milliardth,
+				binder:   And,
+				zeroFrac: true,
 			},
 			want: "минус двадцать один и сто двадцать три миллиона миллиардных",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := FloatInWords(tt.args.f, tt.args.fraction, tt.args.binder,
-				tt.args.showZeroInt, tt.args.showZeroFrac, tt.args.withZeroInt); got != tt.want {
+			got := FloatInWords(tt.args.f, tt.args.fraction, tt.args.binder, tt.args.zeroInt, tt.args.zeroFrac, tt.args.withZeros)
+			if got != tt.want {
 				t.Errorf("FloatInWords() = %v, want %v", got, tt.want)
 			}
 		})
 	}
+}
+
+func ExampleFloatInWords() {
+	fmt.Println(FloatInWords(21, Tenth, Whole, false, true, false))
+	fmt.Println(FloatInWords(math.E, Hundredth, NoBinder, false, true, false))
+	fmt.Println(FloatInWords(math.E, Thousandth, And, false, true, false))
+	fmt.Println(FloatInWords(math.E, Millionth, Whole, false, true, false))
+	// Output:
+	// двадцать одна целая ноль десятых
+	// два семьдесят одна сотая
+	// два и семьсот восемнадцать тысячных
+	// две целых семьсот восемнадцать тысяч двести восемьдесят одна миллионная
+}
+
+func ExampleFloatInWordsAuto() {
+	fmt.Println(FloatInWordsAuto(21, Whole, false, false, false))
+	fmt.Println(FloatInWordsAuto(math.Pi, Whole, false, false, false))
+	// Output:
+	// двадцать одна целая
+	// три целых четырнадцать миллиардов сто пятьдесят девять миллионов двести шестьдесят пять тысяч триста пятьдесят восемь стомиллиардных
 }

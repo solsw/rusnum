@@ -4,27 +4,6 @@ import (
 	"math"
 )
 
-// Fraction of a whole number.
-type (
-	Fraction int
-)
-
-// Supported fractions.
-const (
-	_ Fraction = iota
-	Tenth
-	Hundredth
-	Thousandth
-	Tenthousandth
-	Hundredthousandth
-	Millionth
-	Tenmillionth
-	Hundredmillionth
-	Milliardth
-	Tenmilliardth
-	Hundredmilliardth
-)
-
 var (
 	tenthNumberCase             = [3]string{"десятая", "десятых", "десятых"}
 	hundredthNumberCase         = [3]string{"сотая", "сотых", "сотых"}
@@ -42,6 +21,9 @@ var (
 // FracInWords returns 'frac' expressed in 'fraction's in russian words.
 // If result is 0 and 'showZero' is false, empty string is returned.
 func FracInWords(frac float64, fraction Fraction, showZero bool) string {
+	if fraction == NoFraction {
+		return IntInWords(int64(frac), showZero, Masculine)
+	}
 	absFrac := math.Abs(frac)
 	var numberCase [3]string
 	switch fraction {
@@ -75,7 +57,8 @@ func FracInWords(frac float64, fraction Fraction, showZero bool) string {
 	case Tenmilliardth:
 		absFrac *= 10000000000
 		numberCase = tenmilliardthNumberCase
-	case Hundredmilliardth:
+	// all other fractions are treated as Hundredmilliardth
+	default:
 		absFrac *= 100000000000
 		numberCase = hundredmilliardthNumberCase
 	}
@@ -89,4 +72,9 @@ func FracInWords(frac float64, fraction Fraction, showZero bool) string {
 		return "минус " + r
 	}
 	return r
+}
+
+// FracInWordsAuto is like FracInWords but determines the Fraction automatically.
+func FracInWordsAuto(frac float64, showZero bool) string {
+	return FracInWords(frac, fractionFromFloat(frac), showZero)
 }

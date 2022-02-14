@@ -148,9 +148,9 @@ const minInt64InWords string = // -9 223 372 036 854 775 808
 	"тридцать шесть миллиардов восемьсот пятьдесят четыре миллиона семьсот семьдесят пять тысяч восемьсот восемь"
 
 // IntInWords returns 'n' represented in russian words.
-// If 'withZero' is false, zero triples are omitted.
+// If 'withZeros' is false, zero triples are omitted.
 // 'gender' determines russian grammatical gender for ones.
-func IntInWords(n int64, withZero bool, gender GrammaticalGender) string {
+func IntInWords(n int64, withZeros bool, gender GrammaticalGender) string {
 	if n == 0 {
 		return zeroInWords
 	}
@@ -167,7 +167,7 @@ func IntInWords(n int64, withZero bool, gender GrammaticalGender) string {
 	for absN > 0 {
 		tripleNumber++
 		triple := absN % 1000
-		if triple > 0 || (triple == 0 && withZero) {
+		if triple > 0 || (triple == 0 && withZeros) {
 			if tripleNumber == 1 {
 				res, _ = tripleInWords(triple, gender)
 			} else {

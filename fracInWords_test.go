@@ -1,6 +1,8 @@
 package rusnum
 
 import (
+	"fmt"
+	"math"
 	"testing"
 )
 
@@ -19,6 +21,7 @@ func TestFracInWords(t *testing.T) {
 			args: args{
 				frac:     0.0,
 				fraction: Tenth,
+				showZero: false,
 			},
 			want: "",
 		},
@@ -132,9 +135,30 @@ func TestFracInWords(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := FracInWords(tt.args.frac, tt.args.fraction, tt.args.showZero); got != tt.want {
+			got := FracInWords(tt.args.frac, tt.args.fraction, tt.args.showZero)
+			if got != tt.want {
 				t.Errorf("FracInWords() = %v, want %v", got, tt.want)
 			}
 		})
 	}
+}
+
+func ExampleFracInWords() {
+	fmt.Println(FracInWords(21, Tenth, false))
+	fmt.Println(FracInWords(math.Ln2, Tenmilliardth, false))
+	// Output:
+	// двести десять десятых
+	// шесть миллиардов девятьсот тридцать один миллион четыреста семьдесят одна тысяча восемьсот пять десятимиллиардных
+}
+
+func ExampleFracInWordsAuto() {
+	fmt.Println(FracInWordsAuto(21, false))
+	fmt.Println(FracInWordsAuto(12.34, false))
+	fmt.Println(FracInWordsAuto(0.123456789, false))
+	fmt.Println(FracInWordsAuto(math.Log10E, false))
+	// Output:
+	// двадцать один
+	// одна тысяча двести тридцать четыре сотых
+	// сто двадцать три миллиона четыреста пятьдесят шесть тысяч семьсот восемьдесят девять миллиардных
+	// сорок три миллиарда четыреста двадцать девять миллионов четыреста сорок восемь тысяч сто девянoсто стомиллиардных
 }
