@@ -20,19 +20,25 @@ var (
 	wholeNumberCase = [3]string{"целая", "целых", "целых"}
 )
 
-// FloatInWords returns 'f' represented in russian words.
+// FloatInWords returns 'f' in russian words.
 // If f's integer part is 0 and 'zeroInt' is false, no integer part is returned.
-// If f's fractional part is 0 and 'zeroFrac' is false, no fractional part is returned (see FracInWords).
+// If f's fractional part is 0 and 'zeroFrac' is false, no fractional part is returned (see FloatInFractions).
 // 'withZeros' is used by f's integer part (see IntInWords).
-func FloatInWords(f float64, fraction Fraction, binder Binder, zeroInt, zeroFrac, withZeros bool) string {
+func FloatInWords(f float64, frac Fraction, binder Binder, zeroInt, zeroFrac, withZeros bool) string {
+	if frac < NoFraction || frac > Tenmilliardth {
+		frac = Hundredmilliardth
+	}
+	fracDatum := fracData[frac]
 	absF := math.Abs(f)
-	fint, frac := math.Modf(absF)
-	ifint := int64(fint)
+	fint := math.Floor(absF)
+	numOfFracs := math.Floor(absF*fracDatum.multiplier - fint*fracDatum.multiplier)
+	inumOfFracs := int64(numOfFracs)
 	sfrac := ""
-	if fraction != NoFraction {
-		sfrac = FracInWords(frac, fraction, zeroFrac)
+	if frac != NoFraction {
+		sfrac = IntInWords(inumOfFracs, false, Feminine) + " " + fracDatum.numberCase[getNumeralNumberCase(inumOfFracs)]
 	}
 	var sb strings.Builder
+	ifint := int64(fint)
 	if ifint == 0 && !zeroInt && len(sfrac) > 0 {
 		sb.WriteString(sfrac)
 	} else {

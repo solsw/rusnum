@@ -1,6 +1,7 @@
 package rusnum
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -39,7 +40,8 @@ func TestNRubles(t *testing.T) {
 			args: args{
 				number:   10000001,
 				showZero: false,
-			}, want: "10000001 рубль",
+			},
+			want: "10000001 рубль",
 		},
 	}
 	for _, tt := range tests {
@@ -49,4 +51,12 @@ func TestNRubles(t *testing.T) {
 			}
 		})
 	}
+}
+
+func ExampleNInWordsRubles() {
+	fmt.Println(NInWordsRubles(2, false, false))
+	fmt.Println(NInWordsRubles(2000001, false, true))
+	// Output:
+	// два рубля
+	// два миллиона ноль тысяч один рубль
 }

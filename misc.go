@@ -4,25 +4,21 @@ import (
 	"fmt"
 )
 
-type (
-	// GrammaticalGender - russian grammatical gender.
-	GrammaticalGender int
-)
+// GrammaticalGender - russian grammatical gender.
+type GrammaticalGender int
 
 const (
-	// Neuter gender.
+	// Neuter grammatical gender.
 	Neuter GrammaticalGender = iota
-	// Masculine gender.
+	// Masculine grammatical gender.
 	Masculine
-	// Feminine gender.
+	// Feminine grammatical gender.
 	Feminine
 )
 
-type (
-	// russian number/case used with numbers
-	// русские число/падеж, используемые с числами
-	numeralNumberCase int
-)
+// russian number/case used with numbers
+// русские число/падеж, используемые с числами
+type numeralNumberCase int
 
 // numeralNumberCase choices
 const (
@@ -39,12 +35,12 @@ const (
 
 func getNumeralNumberCasePrim(last2 int64) numeralNumberCase {
 	// 0 <= last2 <= 99
-	// depends on two last digits in general
+	// in general case depends on two last digits
 	// в общем случае определяется двумя последними цифрами
 	if last2 == 11 || last2 == 12 || last2 == 13 || last2 == 14 {
 		return pluralGenitive
 	}
-	// depends on one last digit now
+	// now depends on one last digit
 	// теперь определяется одной последней цифрой
 	switch last2 % 10 {
 	case 1:
@@ -74,7 +70,7 @@ func IntAndItems(n int64, showZero bool, items string) string {
 }
 
 // IntInWordsAndItems returns string containing 'n' in russian words and 'items'.
-// If 'n' is 0 and 'withZeros' is false, empty string is returned.
+// If 'n' is 0 and 'showZero' is false, empty string is returned.
 // If 'withZeros' is false, zero triples are omitted.
 func IntInWordsAndItems(n int64, showZero, withZeros bool, gender GrammaticalGender, items string) string {
 	if n == 0 && !showZero {

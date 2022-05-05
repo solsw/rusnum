@@ -112,6 +112,14 @@ func TestFloatInWords(t *testing.T) {
 			},
 			want: "минус двадцать один и сто двадцать три миллиона миллиардных",
 		},
+		{name: "2.3",
+			args: args{
+				f:        2.3,
+				fraction: Tenth,
+				binder:   And,
+			},
+			want: "два и три десятых",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
