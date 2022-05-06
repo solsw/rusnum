@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-// Binder of whole and fractional parts.
+// Binder of integer and fractional parts.
 type Binder int
 
 const (
@@ -30,23 +30,21 @@ func FloatInWords(f float64, frac Fraction, binder Binder, zeroInt, zeroFrac, wi
 	}
 	fracDatum := fracData[frac]
 	absF := math.Abs(f)
-	fint := math.Floor(absF)
-	numOfFracs := math.Floor(absF*fracDatum.multiplier - fint*fracDatum.multiplier)
-	inumOfFracs := int64(numOfFracs)
+	wholesF := int64(math.Floor(absF))
+	numOfFracs := int64(math.Floor(absF*fracDatum.multiplier)) - wholesF*fracDatum.imultiplier
 	sfrac := ""
 	if frac != NoFraction {
-		sfrac = IntInWords(inumOfFracs, false, Feminine) + " " + fracDatum.numberCase[getNumeralNumberCase(inumOfFracs)]
+		sfrac = IntInWords(numOfFracs, false, Feminine) + " " + fracDatum.numberCase[getNumeralNumberCase(numOfFracs)]
 	}
 	var sb strings.Builder
-	ifint := int64(fint)
-	if ifint == 0 && !zeroInt && len(sfrac) > 0 {
+	if wholesF == 0 && !zeroInt && len(sfrac) > 0 {
 		sb.WriteString(sfrac)
 	} else {
 		gender := Masculine
 		if binder == Whole {
 			gender = Feminine
 		}
-		sb.WriteString(IntInWords(ifint, withZeros, gender))
+		sb.WriteString(IntInWords(wholesF, withZeros, gender))
 		switch binder {
 		case And:
 			if len(sfrac) > 0 {
@@ -54,7 +52,7 @@ func FloatInWords(f float64, frac Fraction, binder Binder, zeroInt, zeroFrac, wi
 			}
 		case Whole:
 			sb.WriteString(" ")
-			sb.WriteString(wholeNumberCase[getNumeralNumberCase(ifint)])
+			sb.WriteString(wholeNumberCase[getNumeralNumberCase(wholesF)])
 		}
 		if len(sfrac) > 0 {
 			sb.WriteString(" ")
@@ -70,4 +68,30 @@ func FloatInWords(f float64, frac Fraction, binder Binder, zeroInt, zeroFrac, wi
 // FloatInWordsAuto is like FloatInWords but determines the Fraction automatically.
 func FloatInWordsAuto(f float64, binder Binder, zeroInt, zeroFrac, withZeros bool) string {
 	return FloatInWords(f, fractionFromFloat(f), binder, zeroInt, zeroFrac, withZeros)
+}
+
+// FloatInFractions returns 'f' expressed in 'frac's in russian words.
+// If result is 0 and 'showZero' is false, empty string is returned.
+func FloatInFractions(f float64, frac Fraction, showZero bool) string {
+	if frac == NoFraction {
+		return IntInWords(int64(f), showZero, Masculine)
+	}
+	if frac < NoFraction || frac > Tenmilliardth {
+		frac = Hundredmilliardth
+	}
+	fracDatum := fracData[frac]
+	numOfFracs := int64(math.Floor(math.Abs(f) * fracDatum.multiplier))
+	if numOfFracs == 0 && !showZero {
+		return ""
+	}
+	r := IntInWords(numOfFracs, false, Feminine) + " " + fracDatum.numberCase[getNumeralNumberCase(numOfFracs)]
+	if f < 0 {
+		return "минус " + r
+	}
+	return r
+}
+
+// FloatInFractionsAuto is like FloatInFractions but determines the Fraction automatically.
+func FloatInFractionsAuto(f float64, showZero bool) string {
+	return FloatInFractions(f, fractionFromFloat(f), showZero)
 }
