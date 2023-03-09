@@ -54,8 +54,8 @@ func getNumeralNumberCasePrim(last2 int64) numeralNumberCase {
 
 func getNumeralNumberCase(n int64) numeralNumberCase {
 	absN := n
-	if absN < 0 {
-		absN = -absN
+	if n < 0 {
+		absN = -n
 	}
 	return getNumeralNumberCasePrim(absN % 100)
 }
