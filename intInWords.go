@@ -16,6 +16,7 @@ const (
 )
 
 // IntInWords returns 'n' in russian words.
+//
 // If 'withZeros' is false, zero triples are omitted.
 // 'gender' determines russian grammatical gender for ones of numbers ending in 1 or 2.
 func IntInWords(n int64, withZeros bool, gender GrammaticalGender) string {

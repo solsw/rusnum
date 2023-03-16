@@ -21,9 +21,10 @@ var (
 )
 
 // FloatInWords returns 'f' in russian words.
+//
 // If f's integer part is 0 and 'zeroInt' is false, no integer part is returned.
-// If f's fractional part is 0 and 'zeroFrac' is false, no fractional part is returned (see FloatInFractions).
-// 'withZeros' is used by f's integer part (see IntInWords).
+// If f's fractional part is 0 and 'zeroFrac' is false, no fractional part is returned (see [FloatInFractions]).
+// 'withZeros' is used by f's integer part (see [IntInWords]).
 func FloatInWords(f float64, frac Fraction, binder Binder, zeroInt, zeroFrac, withZeros bool) string {
 	if frac < NoFraction || frac > Tenmilliardth {
 		frac = Hundredmilliardth
@@ -65,12 +66,13 @@ func FloatInWords(f float64, frac Fraction, binder Binder, zeroInt, zeroFrac, wi
 	return sb.String()
 }
 
-// FloatInWordsAuto is like FloatInWords but determines the Fraction automatically.
+// FloatInWordsAuto is like [FloatInWords] but determines the [Fraction] automatically.
 func FloatInWordsAuto(f float64, binder Binder, zeroInt, zeroFrac, withZeros bool) string {
 	return FloatInWords(f, fractionFromFloat(f), binder, zeroInt, zeroFrac, withZeros)
 }
 
-// FloatInFractions returns 'f' expressed in 'frac's in russian words.
+// FloatInFractions returns 'f' expressed in 'fracs' in russian words.
+//
 // If result is 0 and 'showZero' is false, empty string is returned.
 func FloatInFractions(f float64, frac Fraction, showZero bool) string {
 	if frac == NoFraction {
@@ -91,7 +93,7 @@ func FloatInFractions(f float64, frac Fraction, showZero bool) string {
 	return r
 }
 
-// FloatInFractionsAuto is like FloatInFractions but determines the Fraction automatically.
+// FloatInFractionsAuto is like [FloatInFractions] but determines the [Fraction] automatically.
 func FloatInFractionsAuto(f float64, showZero bool) string {
 	return FloatInFractions(f, fractionFromFloat(f), showZero)
 }

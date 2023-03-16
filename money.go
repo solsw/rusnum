@@ -11,12 +11,14 @@ func Rubles(n int64) string {
 }
 
 // NRubles returns string containing 'n' and corresponding russian for "ruble".
+//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 func NRubles(n int64, showZero bool) string {
 	return IntAndItems(n, showZero, Rubles(n))
 }
 
 // NInWordsRubles returns string containing 'n' in russian words and corresponding russian for "ruble".
+//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 // If 'withZeros' is false, zero triples are omitted.
 func NInWordsRubles(n int64, showZero, withZeros bool) string {
@@ -29,12 +31,14 @@ func Kopecks(n int64) string {
 }
 
 // NKopecks returns string containing 'n' and corresponding russian for "kopeck".
+//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 func NKopecks(n int64, showZero bool) string {
 	return IntAndItems(n, showZero, Kopecks(n))
 }
 
 // NInWordsKopecks returns string containing 'n' in russian words and corresponding russian for "kopeck".
+//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 // If 'withZeros' is false, zero triples are omitted.
 func NInWordsKopecks(n int64, showZero, withZeros bool) string {
