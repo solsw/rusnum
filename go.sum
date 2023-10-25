@@ -1,8 +1,6 @@
-github.com/solsw/mathhelper v0.1.0 h1:whq/z0Wihv/RmcrqQ6MVYmvKpyJloO8kzdj3zkhp/Uo=
-github.com/solsw/mathhelper v0.1.0/go.mod h1:dSSS7JXR+PM1y2XFYhuT5rK+wjznJv7Ysq+Ka9FTQsE=
-github.com/solsw/slicehelper v0.1.2 h1:6wQ5Z+uB8jwMnTB8kmFy/4LrTFLpmS3wxduaubOuY0k=
-github.com/solsw/slicehelper v0.1.2/go.mod h1:g2uyHCxszyr8S3lHTIeOYgZjiTtwcU3i+KTP6r+LfpE=
-github.com/solsw/stringhelper v0.3.1 h1:9M0rsHzSOtVDzC+0JNIEqSB7yOqqbv4py31KbPerJXw=
-github.com/solsw/stringhelper v0.3.1/go.mod h1:IBtailCUlt8XTM1qfFlwf5ZnBSh78I0M/MQpJg+a6n8=
-golang.org/x/exp v0.0.0-20230315142452-642cacee5cc0 h1:pVgRXcIictcr+lBQIFeiwuwtDIs4eL21OuM9nyAADmo=
-golang.org/x/exp v0.0.0-20230315142452-642cacee5cc0/go.mod h1:CxIveKay+FTh1D0yPZemJVgC/95VzuuOLq5Qi4xnoYc=
+github.com/solsw/mathhelper v0.2.0 h1:lzmLTpBwNY2uYxmiKJxB8fG2Q3sWh3U2AMbezHL5QFM=
+github.com/solsw/mathhelper v0.2.0/go.mod h1:zUP5mt2wl7eupdemC22HWE/0rGEUGEL6ZMGDbV83t04=
+github.com/solsw/stringhelper v0.4.1 h1:64b+FwocvJ+zYRhYX7rPYe3GHFkhU9Wnnr4e8ZXC9ck=
+github.com/solsw/stringhelper v0.4.1/go.mod h1:IBtailCUlt8XTM1qfFlwf5ZnBSh78I0M/MQpJg+a6n8=
+golang.org/x/exp v0.0.0-20231006140011-7918f672742d h1:jtJma62tbqLibJ5sFQz8bKtEM8rJBtfilJ2qTU199MI=
+golang.org/x/exp v0.0.0-20231006140011-7918f672742d/go.mod h1:ldy0pHrwJyGW56pPQzzkH36rKxoZW1tw7ZJpeKx+hdo=

@@ -20,14 +20,12 @@ func Centuries(n int64) string {
 }
 
 // NCenturies returns string containing 'n' and corresponding russian for "century".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 func NCenturies(n int64, showZero bool) string {
 	return IntAndItems(n, showZero, Centuries(n))
 }
 
 // NInWordsCenturies returns string containing 'n' in russian words and corresponding russian for "century".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 // If 'withZeros' is false, zero triples are omitted.
 func NInWordsCenturies(n int64, showZero, withZeros bool) string {
@@ -40,14 +38,12 @@ func Years(n int64) string {
 }
 
 // NYears returns string containing 'n' and corresponding russian for "year".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 func NYears(n int64, showZero bool) string {
 	return IntAndItems(n, showZero, Years(n))
 }
 
 // NInWordsYears returns string containing 'n' in russian words and corresponding russian for "year".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 // If 'withZeros' is false, zero triples are omitted.
 func NInWordsYears(n int64, showZero, withZeros bool) string {
@@ -60,14 +56,12 @@ func Months(n int64) string {
 }
 
 // NMonths returns string containing 'n' and corresponding russian for "month".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 func NMonths(n int64, showZero bool) string {
 	return IntAndItems(n, showZero, Months(n))
 }
 
 // NInWordsMonths returns string containing 'n' in russian words and corresponding russian for "month".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 // If 'withZeros' is false, zero triples are omitted.
 func NInWordsMonths(n int64, showZero, withZeros bool) string {
@@ -80,14 +74,12 @@ func Weeks(n int64) string {
 }
 
 // NWeeks returns string containing 'n' and corresponding russian for "week".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 func NWeeks(n int64, showZero bool) string {
 	return IntAndItems(n, showZero, Weeks(n))
 }
 
 // NInWordsWeeks returns string containing 'n' in russian words and corresponding russian for "week".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 // If 'withZeros' is false, zero triples are omitted.
 func NInWordsWeeks(n int64, showZero, withZeros bool) string {
@@ -100,14 +92,12 @@ func Days(n int64) string {
 }
 
 // NDays returns string containing 'n' and corresponding russian for "day".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 func NDays(n int64, showZero bool) string {
 	return IntAndItems(n, showZero, Days(n))
 }
 
 // NInWordsDays returns string containing 'n' in russian words and corresponding russian for "day".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 // If 'withZeros' is false, zero triples are omitted.
 func NInWordsDays(n int64, showZero, withZeros bool) string {
@@ -120,14 +110,12 @@ func Hours(n int64) string {
 }
 
 // NHours returns string containing 'n' and corresponding russian for "hour".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 func NHours(n int64, showZero bool) string {
 	return IntAndItems(n, showZero, Hours(n))
 }
 
 // NInWordsHours returns string containing 'n' in russian words and corresponding russian for "hour".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 // If 'withZeros' is false, zero triples are omitted.
 func NInWordsHours(n int64, showZero, withZeros bool) string {
@@ -140,14 +128,12 @@ func Minutes(n int64) string {
 }
 
 // NMinutes returns string containing 'n' and corresponding russian for "minute".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 func NMinutes(n int64, showZero bool) string {
 	return IntAndItems(n, showZero, Minutes(n))
 }
 
 // NInWordsMinutes returns string containing 'n' in russian words and corresponding russian for "minute".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 // If 'withZeros' is false, zero triples are omitted.
 func NInWordsMinutes(n int64, showZero, withZeros bool) string {
@@ -160,14 +146,12 @@ func Seconds(n int64) string {
 }
 
 // NSeconds returns string containing 'n' and corresponding russian for "second".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 func NSeconds(n int64, showZero bool) string {
 	return IntAndItems(n, showZero, Seconds(n))
 }
 
 // NInWordsSeconds returns string containing 'n' in russian words and corresponding russian for "second".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 // If 'withZeros' is false, zero triples are omitted.
 func NInWordsSeconds(n int64, showZero, withZeros bool) string {
@@ -180,14 +164,12 @@ func Milliseconds(n int64) string {
 }
 
 // NMilliseconds returns string containing 'n' and corresponding russian for "millisecond".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 func NMilliseconds(n int64, showZero bool) string {
 	return IntAndItems(n, showZero, Milliseconds(n))
 }
 
 // NInWordsMilliseconds returns string containing 'n' in russian words and corresponding russian for "millisecond".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 // If 'withZeros' is false, zero triples are omitted.
 func NInWordsMilliseconds(n int64, showZero, withZeros bool) string {
@@ -200,14 +182,12 @@ func Microseconds(n int64) string {
 }
 
 // NMicroseconds returns string containing 'n' and corresponding russian for "microsecond".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 func NMicroseconds(n int64, showZero bool) string {
 	return IntAndItems(n, showZero, Microseconds(n))
 }
 
 // NInWordsMicroseconds returns string containing 'n' in russian words and corresponding russian for "microsecond".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 // If 'withZeros' is false, zero triples are omitted.
 func NInWordsMicroseconds(n int64, showZero, withZeros bool) string {
@@ -220,14 +200,12 @@ func Nanoseconds(n int64) string {
 }
 
 // NNanoseconds returns string containing 'n' and corresponding russian for "nanosecond".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 func NNanoseconds(n int64, showZero bool) string {
 	return IntAndItems(n, showZero, Nanoseconds(n))
 }
 
 // NInWordsNanoseconds returns string containing 'n' in russian words and corresponding russian for "nanosecond".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 // If 'withZeros' is false, zero triples are omitted.
 func NInWordsNanoseconds(n int64, showZero, withZeros bool) string {

@@ -21,7 +21,6 @@ var (
 )
 
 // FloatInWords returns 'f' in russian words.
-//
 // If f's integer part is 0 and 'zeroInt' is false, no integer part is returned.
 // If f's fractional part is 0 and 'zeroFrac' is false, no fractional part is returned (see [FloatInFractions]).
 // 'withZeros' is used by f's integer part (see [IntInWords]).
@@ -72,7 +71,6 @@ func FloatInWordsAuto(f float64, binder Binder, zeroInt, zeroFrac, withZeros boo
 }
 
 // FloatInFractions returns 'f' expressed in 'fracs' in russian words.
-//
 // If result is 0 and 'showZero' is false, empty string is returned.
 func FloatInFractions(f float64, frac Fraction, showZero bool) string {
 	if frac == NoFraction {

@@ -61,7 +61,6 @@ func getNumeralNumberCase(n int64) numeralNumberCase {
 }
 
 // IntAndItems returns string containing 'n' and 'items'.
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 func IntAndItems(n int64, showZero bool, items string) string {
 	if n == 0 && !showZero {
@@ -71,7 +70,6 @@ func IntAndItems(n int64, showZero bool, items string) string {
 }
 
 // IntInWordsAndItems returns string containing 'n' in russian words and 'items'.
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 // If 'withZeros' is false, zero triples are omitted.
 func IntInWordsAndItems(n int64, showZero, withZeros bool, gender GrammaticalGender, items string) string {

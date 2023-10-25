@@ -5,7 +5,6 @@ import (
 )
 
 // OnesInWords returns ones (three lower digits) of 'n' in russian words.
-//
 // 'gender' determines russian grammatical gender for ones of numbers ending in 1 or 2.
 func OnesInWords(n int64, gender GrammaticalGender) string {
 	absN := mathhelper.Abs(n)

@@ -15,7 +15,6 @@ func Thousands(n int64) string {
 }
 
 // NThousands returns string containing 'n' and corresponding russian for "thousand".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 func NThousands(n int64, showZero bool) string {
 	return IntAndItems(n, showZero, Thousands(n))
@@ -27,7 +26,6 @@ func Millions(n int64) string {
 }
 
 // NMillions returns string containing 'n' and corresponding russian for "million".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 func NMillions(n int64, showZero bool) string {
 	return IntAndItems(n, showZero, Millions(n))
@@ -39,7 +37,6 @@ func Milliards(n int64) string {
 }
 
 // NMilliards returns string containing 'n' and corresponding russian for "milliard".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 func NMilliards(n int64, showZero bool) string {
 	return IntAndItems(n, showZero, Milliards(n))
@@ -53,7 +50,6 @@ func Billions(n int64) string {
 
 // NBillions returns string containing 'n' and corresponding russian for "milliard".
 // ("billion" is called "milliard" in russian.)
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 func NBillions(n int64, showZero bool) string {
 	return IntAndItems(n, showZero, Billions(n))
@@ -65,7 +61,6 @@ func Trillions(n int64) string {
 }
 
 // NTrillions returns string containing 'n' and corresponding russian for "trillion".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 func NTrillions(n int64, showZero bool) string {
 	return IntAndItems(n, showZero, Trillions(n))
@@ -77,7 +72,6 @@ func Quadrillions(n int64) string {
 }
 
 // NQuadrillions returns string containing 'n' and corresponding russian for "quadrillion".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 func NQuadrillions(n int64, showZero bool) string {
 	return IntAndItems(n, showZero, Quadrillions(n))
@@ -89,7 +83,6 @@ func Quintillions(n int64) string {
 }
 
 // NQuintillions returns string containing 'n' and corresponding russian for "quintillion".
-//
 // If 'n' is 0 and 'showZero' is false, empty string is returned.
 func NQuintillions(n int64, showZero bool) string {
 	return IntAndItems(n, showZero, Quintillions(n))

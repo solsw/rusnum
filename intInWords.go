@@ -2,9 +2,9 @@ package rusnum
 
 import (
 	"math"
+	"slices"
 
 	"github.com/solsw/mathhelper"
-	"github.com/solsw/slicehelper"
 	"github.com/solsw/stringhelper"
 )
 
@@ -16,7 +16,6 @@ const (
 )
 
 // IntInWords returns 'n' in russian words.
-//
 // If 'withZeros' is false, zero triples are omitted.
 // 'gender' determines russian grammatical gender for ones of numbers ending in 1 or 2.
 func IntInWords(n int64, withZeros bool, gender GrammaticalGender) string {
@@ -29,7 +28,8 @@ func IntInWords(n int64, withZeros bool, gender GrammaticalGender) string {
 	}
 	absN := mathhelper.Abs(n)
 	tt := triplesInWords(absN, withZeros, gender)
-	res := stringhelper.JoinSkip(slicehelper.Reverse(tt), " ", func(s string) bool { return s == "" })
+	slices.Reverse(tt)
+	res := stringhelper.JoinSkip(tt, " ", func(s string) bool { return s == "" })
 	if n < 0 {
 		res = "минус " + res
 	}

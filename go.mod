@@ -1,11 +1,10 @@
 module github.com/solsw/rusnum
 
-go 1.18
+go 1.21
 
 require (
-	github.com/solsw/mathhelper v0.1.0
-	github.com/solsw/slicehelper v0.1.2
-	github.com/solsw/stringhelper v0.3.1
+	github.com/solsw/mathhelper v0.2.0
+	github.com/solsw/stringhelper v0.4.1
 )
 
-require golang.org/x/exp v0.0.0-20230315142452-642cacee5cc0 // indirect
+require golang.org/x/exp v0.0.0-20231006140011-7918f672742d // indirect
